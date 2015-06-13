@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -63,7 +68,7 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
   ylab('Occurrences')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 ### Mean and Median of the total number of steps taken each day
 The following code calculates and displays the mean and median of total number of steps per day, ignoring missing values.
@@ -91,7 +96,7 @@ ggplot(data=average.steps.per.period, aes(time, steps)) +
   ylab('Average Steps')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 ### Most active interval
 The time series plot shows the most active interval to be somewhere prior to 9am. The exact determination is found with
@@ -162,7 +167,7 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
   ylab('Occurrences')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
 ### Mean and Median of the total number of steps taken each day (with imputed values)
 The following code calculates and displays the mean and median of total number of steps per day, *imputing* missing values.
@@ -195,6 +200,6 @@ ggplot(data=average.steps.per.period.day.type, aes(time, steps)) +
   ylab('Average Steps')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
 
 Review the results from the plots, it appears the individual sleeps in a little later during the weekends and there is not a rush to get to the morning destination (be it school or work). The individual is generally more active during the day, and appears to go to be later during the weekends.
