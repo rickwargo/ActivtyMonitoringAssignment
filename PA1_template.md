@@ -179,7 +179,7 @@ median.steps.per.day <- median(steps.per.day$steps, na.rm=T)
 - *Mean* steps per day is **10,766.19**.
 - *Median* steps per day is **10,766.19**.
 
-There is a **negligible impact** on the mean and median of the data by imputing the values using the average of the five minute period for the missing data.
+There is a **negligible impact** on the mean and median of the data by imputing the values using the average of the five minute period for the missing data. The only impact is to the frequency of the mean/median of the data as it is now larger by the number of missing days (this is the data that was imputed).
 
 ## Are there differences in activity patterns between weekdays and weekends?
 The code below aggregates the data by taking the mean of the five minute time periods separately for both weekdays and weekend days. It then creates time series plots in two panels to differentiate the weekday vs. weekend activity.
