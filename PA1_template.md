@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -68,7 +63,7 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
   ylab('Occurrences')
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 ### Mean and Median of the total number of steps taken each day
 The following code calculates and displays the mean and median of total number of steps per day, ignoring missing values.
@@ -96,7 +91,7 @@ ggplot(data=average.steps.per.period, aes(time, steps)) +
   ylab('Average Steps')
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
 
 ### Most active interval
 The time series plot shows the most active interval to be somewhere prior to 9am. The exact determination is found with
@@ -150,7 +145,7 @@ df.filled[which(is.na(df.filled$steps)), 'steps'] <- df.filled[which(is.na(df.fi
 ```
 
 ### Histogram of steps taken each day with missing values imputed
-Using the data wieht imputed values, display a histogram of number of steps taken each day, 
+Using the new data set with imputed values, display a histogram of number of steps taken each day, 
 noting the mean (in a dotted blue line) and median (in a red dashed line) as described by the code below.
 
 ```r
@@ -167,7 +162,7 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
   ylab('Occurrences')
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
 
 ### Mean and Median of the total number of steps taken each day (with imputed values)
 The following code calculates and displays the mean and median of total number of steps per day, *imputing* missing values.
@@ -179,7 +174,7 @@ median.steps.per.day <- median(steps.per.day$steps, na.rm=T)
 - *Mean* steps per day is **10,766.19**.
 - *Median* steps per day is **10,766.19**.
 
-There is a **negligible impact** on the mean and median of the data by imputing the values using the average of the five minute period for the missing data. The only impact is to the frequency of the mean/median of the data as it is now larger by the number of missing days (this is the data that was imputed).
+There is a negligible impact on the mean and median of the data by imputing the values using the average of the five minute period for the missing data. The only impact is to the frequency of the mean/median of the data as it is now larger by the number of missing days (this is the data that was imputed).
 
 ## Are there differences in activity patterns between weekdays and weekends?
 The code below aggregates the data by taking the mean of the five minute time periods separately for both weekdays and weekend days. It then creates time series plots in two panels to differentiate the weekday vs. weekend activity.
@@ -200,6 +195,6 @@ ggplot(data=average.steps.per.period.day.type, aes(time, steps)) +
   ylab('Average Steps')
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
 
 Review the results from the plots, it appears the individual sleeps in a little later during the weekends and there is not a rush to get to the morning destination (be it school or work). The individual is generally more active during the day, and appears to go to be later during the weekends.

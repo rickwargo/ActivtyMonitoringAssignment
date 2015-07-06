@@ -131,7 +131,7 @@ df.filled[which(is.na(df.filled$steps)), 'steps'] <- df.filled[which(is.na(df.fi
 ```
 
 ### Histogram of steps taken each day with missing values imputed
-Using the data wieht imputed values, display a histogram of number of steps taken each day, 
+Using the new data set with imputed values, display a histogram of number of steps taken each day, 
 noting the mean (in a dotted blue line) and median (in a red dashed line) as described by the code below.
 ```{r}
 # Using the new data set with imputed values, calculate the new steps per day
