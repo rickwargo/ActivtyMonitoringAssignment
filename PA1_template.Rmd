@@ -1,5 +1,7 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
+author: "[Rick Wargo](https://www.rickwargo.com)"
+date: "14 Aug 2015"
 output: 
   html_document:
     keep_md: true
