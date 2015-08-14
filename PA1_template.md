@@ -10,11 +10,12 @@ output:
 
 ## Loading and preprocessing the data
 This data comes from a personal activity monitoring device. This device collects data at five minute intervals
-through out the day. The data consists of two months of data from an anonymous individual collected during the months of 
-October and November, 2012 and include the number of steps taken in five minute intervals each day.
+throughout the day. The data consists of two months of data from an anonymous individual collected during the
+months of October and November, 2012 and include the number of steps taken in five minute intervals each day.
 
-Data is available in the current working directory in the compressed file, activity.zip. The following code loads the data and
-creates a time variable (attached to a future date (2025-01-01) for later presentation purposes.
+Data is available in the current working directory in the compressed file, activity.zip. The following code
+loads the data and creates a time variable (attached to a future date (2025-01-01) for later presentation
+purposes.
 
 The date variable is converted to type Date, from a string format.
 
@@ -35,10 +36,12 @@ df$time <- as.POSIXct(futuretime, format = "%H:%M")
 ## What is mean total number of steps taken per day?
 
 Inspection of the data yields a 13.1% missing value rate for steps. 
-Ignoring these missing values, aggregate the total number of steps taken by day and calculate mean and median values.
+Ignoring these missing values, aggregate the total number of steps taken by day and calculate mean and 
+median values.
 
 ### Calculate the total number of steps per day
-Calculate and save the total number of steps per day to display histogram and calculate mean/median in the following fashion.
+Calculate and save the total number of steps per day to display histogram and calculate mean/median in 
+the following fashion.
 
 ```r
 steps.per.day <- aggregate(steps ~ date, data=df, FUN=sum)
@@ -73,7 +76,8 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 ### Mean and Median of the total number of steps taken each day
-The following code calculates and displays the mean and median of total number of steps per day, ignoring missing values.
+The following code calculates and displays the mean and median of total number of steps per day, 
+ignoring missing values.
 
 ```r
 mean.steps.per.day <- mean(steps.per.day$steps, na.rm=T)
@@ -101,8 +105,8 @@ ggplot(data=average.steps.per.period, aes(time, steps)) +
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 ### Most active interval
-The time series plot shows the most active interval to be somewhere prior to 9am. The exact determination is found with
-the following code.
+The time series plot shows the most active interval to be somewhere prior to 9am. The exact determination 
+is found with the following code.
 
 ```r
 # Interval with maximum steps
@@ -111,7 +115,8 @@ interval <- average.steps.per.period[which.max(average.steps.per.period$steps), 
 The most active five minute interval is at **08:35am**.
 
 ## Imputing missing values
-Inspection of the data reveals the individual is missing data for an entire day for eight of the 61 days being monitored.
+Inspection of the data reveals the individual is missing data for an entire day for eight of the 61 days 
+being monitored.
 
 ```r
 intervals <- unique(df$interval)
@@ -137,9 +142,10 @@ There are **2,304** rows in the dataset that have missing values.
 The total number of rows in the dataset is **17,568**.
 This yields a **13.1%** missing value rate for steps. 
 
-Given the high rate of missing values for steps at various intervals, and the fact the data is missing for an entire day,
-we will fill the missing values by using five minute interval averages to fill in the missing values. Approximate the missing
-data for each row in the dataframe and use that data to replace the missing values for steps.
+Given the high rate of missing values for steps at various intervals, and the fact the data is missing for
+an entire day, we will fill the missing values by using five minute interval averages to fill in the missing
+values. Approximate the missing data for each row in the dataframe and use that data to replace the missing
+values for steps.
 
 ```r
 average.steps.per.interval <- aggregate(steps ~ interval, data=df, FUN=mean)
@@ -172,7 +178,8 @@ ggplot(data=steps.per.day, aes(steps.per.day$steps)) +
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
 ### Mean and Median of the total number of steps taken each day (with imputed values)
-The following code calculates and displays the mean and median of total number of steps per day, *imputing* missing values.
+The following code calculates and displays the mean and median of total number of steps per day, 
+*imputing* missing values.
 
 ```r
 mean.steps.per.day <- mean(steps.per.day$steps, na.rm=T)
@@ -181,10 +188,14 @@ median.steps.per.day <- median(steps.per.day$steps, na.rm=T)
 - *Mean* steps per day is **10,766.19**.
 - *Median* steps per day is **10,766.19**.
 
-There is a negligible impact on the mean and median of the data by imputing the values using the average of the five minute period for the missing data. The only impact is to the frequency of the mean/median of the data as it is now larger by the number of missing days (this is the data that was imputed).
+There is a negligible impact on the mean and median of the data by imputing the values using the average 
+of the five minute period for the missing data. The only impact is to the frequency of the mean/median 
+of the data as it is now larger by the number of missing days (this is the data that was imputed).
 
 ## Are there differences in activity patterns between weekdays and weekends?
-The code below aggregates the data by taking the mean of the five minute time periods separately for both weekdays and weekend days. It then creates time series plots in two panels to differentiate the weekday vs. weekend activity.
+The code below aggregates the data by taking the mean of the five minute time periods separately for both
+weekdays and weekend days. It then creates time series plots in two panels to differentiate the weekday vs.
+weekend activity.
 
 
 ```r
@@ -204,4 +215,6 @@ ggplot(data=average.steps.per.period.day.type, aes(time, steps)) +
 
 ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
 
-Review the results from the plots, it appears the individual sleeps in a little later during the weekends and there is not a rush to get to the morning destination (be it school or work). The individual is generally more active during the day, and appears to go to be later during the weekends.
+Review the results from the plots, it appears the individual sleeps in a little later during the weekends 
+and there is not a rush to get to the morning destination (be it school or work). The individual is generally
+more active during the day, and appears to go to be later during the weekends.
